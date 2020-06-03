@@ -1,4 +1,6 @@
 bin
+*.class
+*.zip
 .classpath
 .project
 .settings/
