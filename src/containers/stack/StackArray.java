@@ -1,4 +1,4 @@
-package containers;
+package containers.stack;
 
 import java.util.Iterator;
 

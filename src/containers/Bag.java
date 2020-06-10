@@ -2,6 +2,9 @@ package containers;
 
 import java.util.Iterator;
 
+import containers.stack.Stack;
+import containers.stack.StackArray;
+
 public class Bag<Item> implements Iterable<Item> {
 
 	private Stack<Item> bag;

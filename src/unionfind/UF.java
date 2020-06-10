@@ -1,4 +1,4 @@
-package union.find;
+package unionfind;
 
 public interface UF {
 

@@ -1,4 +1,4 @@
-package containers;
+package containers.stack;
 
 public interface Stack<Item> extends Iterable<Item> {
 

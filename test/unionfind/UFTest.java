@@ -1,8 +1,12 @@
-package union.find;
+package unionfind;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
+
+import unionfind.QuickFind;
+import unionfind.QuickUnion;
+import unionfind.UF;
 
 public class UFTest {
 
