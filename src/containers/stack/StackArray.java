@@ -82,4 +82,9 @@ public class StackArray<Item> implements Stack<Item> {
 		return this.id;
 	}
 
+	@Override
+	public Item peek() {
+		return this.stack[this.id - 1];
+	}
+
 }

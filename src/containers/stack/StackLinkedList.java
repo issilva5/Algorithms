@@ -84,4 +84,9 @@ public class StackLinkedList<Item> implements Stack<Item> {
 		return s;
 	}
 
+	@Override
+	public Item peek() {
+		return this.top.value;
+	}
+
 }

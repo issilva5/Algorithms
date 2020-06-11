@@ -9,5 +9,7 @@ public interface Stack<Item> extends Iterable<Item> {
 	public boolean isEmpty();
 	
 	public int size();
+
+	public Item peek();
 	
 }

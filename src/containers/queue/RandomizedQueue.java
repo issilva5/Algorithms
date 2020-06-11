@@ -5,13 +5,14 @@ import java.util.NoSuchElementException;
 
 import edu.princeton.cs.algs4.StdRandom;
 
+@SuppressWarnings("unchecked")
 public class RandomizedQueue<Item> implements Iterable<Item> {
 
 	private Item[] rdqueue;
 	private int id;
 	
     // construct an empty randomized queue
-    public RandomizedQueue() {
+	public RandomizedQueue() {
     	
     	this.rdqueue = (Item[]) new Object[1];
     	this.id = 0;
