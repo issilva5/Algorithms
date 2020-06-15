@@ -6,6 +6,8 @@ public class Point2D {
 
 	private final double x;
 	private final double y;
+	public final static Comparator<Point2D> Y_ORDER = new ByYOrder();
+	public final Comparator<Point2D> POLAR_ORDER = new ByAngle();
 	
 	public Point2D(double x, double y) {
 		this.x = x;
@@ -17,41 +19,31 @@ public class Point2D {
 		return "(" + this.x + ", " + this.y + ")";
 	}
 	
-	public static Comparator<Point2D> Y_ORDER() {
-		
-		return new Comparator<Point2D>() {
+	private static class ByYOrder implements Comparator<Point2D> {
 
-			@Override
-			public int compare(Point2D p1, Point2D p2) {
-				if (p1.y == p2.y)
-					return Double.compare(p1.x, p2.x);
-				return Double.compare(p1.y, p2.y);
-			}
-			
-		};
+		@Override
+		public int compare(Point2D p1, Point2D p2) {
+			if (p1.y == p2.y)
+				return Double.compare(p1.x, p2.x);
+			return Double.compare(p1.y, p2.y);
+		}
 		
 	}
 	
-	public Comparator<Point2D> BY_POLAR_ORDER() {
+	private class ByAngle implements Comparator<Point2D> {
 		
-		Point2D p0 = this;
+		Point2D p0 = Point2D.this;
 		
-		return new Comparator<Point2D>() {
-
-			@Override
-			public int compare(Point2D p1, Point2D p2) {
-				
-				int orientation = Point2D.ccw(p0, p1, p2);
-				
-				if (orientation == 0)
-					return Point2D.distSq(p0, p2) >= Point2D.distSq(p0, p1) ? -1 : 1;
-				
-				return orientation;
-			}
+		@Override
+		public int compare(Point2D p1, Point2D p2) {
 			
+			int orientation = Point2D.ccw(p0, p1, p2);
 			
+			if (orientation == 0)
+				return Point2D.distSq(p0, p2) >= Point2D.distSq(p0, p1) ? -1 : 1;
 			
-		};
+			return orientation;
+		}
 		
 	}
 	

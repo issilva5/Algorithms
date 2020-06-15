@@ -4,7 +4,7 @@ import java.util.Comparator;
 
 import sort.Sort;
 
-@SuppressWarnings({"rawtypes", "unchecked"})
+@SuppressWarnings("rawtypes")
 public class Insertion extends Sort {
 
 	@Override
@@ -23,7 +23,7 @@ public class Insertion extends Sort {
 		
 		for (int i = 0; i < array.length; i++)
 			for (int j = i; j > 0; j--)
-				if (comp.compare(array[j], array[j-1]) < 0)
+				if (super.less(comp, array[j], array[j-1]))
 					super.swap(array, j, j-1);
 				else break;
 		

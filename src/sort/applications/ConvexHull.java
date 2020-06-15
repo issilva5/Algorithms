@@ -9,8 +9,8 @@ public class ConvexHull {
 	public static Stack<Point2D> getConvexHull(Point2D[] points, Sort sort) {
 		
 		Stack<Point2D> hull = new StackArray<>();
-		sort.sort(points, Point2D.Y_ORDER());
-		sort.sort(points, points[0].BY_POLAR_ORDER());
+		sort.sort(points, Point2D.Y_ORDER);
+		sort.sort(points, points[0].POLAR_ORDER);
 		
 		hull.push(points[0]);
 		hull.push(points[1]);

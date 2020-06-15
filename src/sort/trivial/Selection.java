@@ -4,7 +4,7 @@ import java.util.Comparator;
 
 import sort.Sort;
 
-@SuppressWarnings({"rawtypes", "unchecked"})
+@SuppressWarnings("rawtypes")
 public class Selection extends Sort {
 
 	@Override
@@ -30,7 +30,7 @@ public class Selection extends Sort {
 			
 			int min = i;
 			for (int j = i + 1; j < array.length; j++) {
-				if (comp.compare(array[j], array[min]) < 0)
+				if (super.less(comp, array[j], array[min]))
 					min = j;
 			}
 			super.swap(array, i, min);

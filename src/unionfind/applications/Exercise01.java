@@ -1,4 +1,4 @@
-package unionfind;
+package unionfind.applications;
 
 public class Exercise01 {
 

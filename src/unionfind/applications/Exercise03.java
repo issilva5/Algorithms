@@ -1,6 +1,8 @@
-package unionfind;
+package unionfind.applications;
 
 import java.util.Scanner;
+
+import unionfind.WeigthedPathCompressionQU;
 
 public class Exercise03 {
 
