@@ -5,18 +5,18 @@ import sort.Sort;
 
 public class Shuffle {
 
-	public void shuffle(Object[] array) {
+	public static void shuffle(Object[] array) {
 		
 		for (int i = 0, r; i < array.length; i++) {
 			
 			r = StdRandom.uniform(i + 1);
-			this.swap(array, i, r);
+			swap(array, i, r);
 			
 		}
 		
 	}
 	
-	public void shuffleSortBased(Sort sort, Object[] array) {
+	public static void shuffleSortBased(Sort sort, Object[] array) {
 		
 		Pair[] paired = new Pair[array.length];
 		for (int i = 0; i < paired.length; i++)
@@ -29,7 +29,7 @@ public class Shuffle {
 		
 	}
 	
-	private class Pair implements Comparable<Pair> {
+	private static class Pair implements Comparable<Pair> {
 		
 		Object obj;
 		double weigth;
@@ -48,7 +48,7 @@ public class Shuffle {
 		
 	}
 	
-	private void swap(Object[] array, int i, int j) {
+	private static void swap(Object[] array, int i, int j) {
 		Object aux = array[i];
 		array[i] = array[j];
 		array[j] = aux;

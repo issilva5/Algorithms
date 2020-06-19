@@ -10,7 +10,7 @@ import sort.fastest.*;
 public class SortTest {
 	
 	Sort sort = new MergeSort();
-	int sz = 1000000;
+	int sz = 10000000;
 	Integer[] array;
 
 	@BeforeEach
