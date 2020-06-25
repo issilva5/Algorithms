@@ -23,7 +23,7 @@ public abstract class Sort {
 		array[j] = aux;
 	}
 	
-	public boolean isSorted(Comparable[] array) {
+	public static boolean isSorted(Comparable[] array) {
 		
 		boolean issorted = true;
 		
@@ -34,7 +34,7 @@ public abstract class Sort {
 		
 	}
 	
-	public boolean isSorted(Object[] array, Comparator comp) {
+	public static boolean isSorted(Object[] array, Comparator comp) {
 		
 		boolean issorted = true;
 		

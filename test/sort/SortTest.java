@@ -9,7 +9,7 @@ import sort.fastest.*;
 
 public class SortTest {
 	
-	Sort sort = new MergeSort();
+	Heapsort sort = new Heapsort();
 	int sz = 10000000;
 	Integer[] array;
 
@@ -26,7 +26,7 @@ public class SortTest {
 	@Test
 	void test() {
 		sort.sort(array);
-		assertTrue(sort.isSorted(array));
+		assertTrue(Sort.isSorted(array));
 	}
 
 }
