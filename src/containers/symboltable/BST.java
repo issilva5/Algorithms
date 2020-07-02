@@ -77,8 +77,44 @@ public class BST<Key extends Comparable<Key>, Value> implements KeyOrderedST<Key
 
 	@Override
 	public void delete(Key k) {
-		// TODO Auto-generated method stub
 		
+		this.root = this.delete(this.root, k);
+		
+	}
+
+	private Node delete(Node x, Key k) {
+		
+		if (x == null)
+			return null;
+		
+		int cmp = k.compareTo(x.key);
+		if (cmp < 0) x.left = this.delete(x.left, k);
+		else if (cmp > 0) x.right = this.delete(x.right, k);
+		else {
+
+			if (x.left == null)
+				return x.right;
+			
+			if (x.right == null)
+				return x.left;
+			
+			Node t = x;
+			x = this.sucessor(t.right);
+			x.right = this.deleteMin(t.right);
+			x.left = t.left;
+			
+		}
+		x.count = this.size(x.left) + this.size(x.right) + 1;
+		return x;
+		
+	}
+
+	private Node sucessor(Node x) {
+		
+		if (x.left == null)
+			return x;
+		
+		return this.sucessor(x.left);
 	}
 
 	@Override
@@ -145,27 +181,72 @@ public class BST<Key extends Comparable<Key>, Value> implements KeyOrderedST<Key
 
 	@Override
 	public Key floor(Key key) {
-		return this.floor(this.root, key).key;
+		Node x = this.floor(this.root, key);
+		if (x == null)
+			return null;
+		return x.key;
 	}
 
 	private Node floor(Node x, Key key) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		if (x == null)
+			return null;
+		
+		int cmp = key.compareTo(x.key);
+		
+		if (cmp == 0) return x;
+		
+		if (cmp < 0)
+			return this.floor(x.left, key);
+		
+		Node t = this.floor(x.right, key);
+		if (t == null) return x;
+		return t;
+		
 	}
 
 	@Override
 	public Key ceiling(Key key) {
-		return this.ceiling(this.root, key);
+		Node x = this.ceiling(this.root, key);
+		if (x == null)
+			return null;
+		return x.key;
 	}
 
-	private Key ceiling(Node x, Key key) {
-		// TODO Auto-generated method stub
-		return null;
+	private Node ceiling(Node x, Key key) {
+		
+		if (x == null)
+			return null;
+		
+		int cmp = key.compareTo(x.key);
+		
+		if (cmp == 0) return x;
+		
+		if (cmp > 0) return this.ceiling(x.right, key);
+		
+		Node t = this.ceiling(x.left, key);
+		if (t == null)
+			return x;
+		return t;
 	}
 
 	@Override
 	public Key select(int rank) {
-		return null;
+		return this.select(this.root, rank);
+	}
+
+	private Key select(Node x, int rank) {
+		
+		if (x == null)
+			return null;
+		
+		if (this.rank(x.key) == rank)
+			return x.key;
+		
+		if (rank > x.count)
+			return this.select(x.right, rank);
+		
+		return this.select(x.left, rank);
 	}
 
 	@Override
@@ -187,14 +268,25 @@ public class BST<Key extends Comparable<Key>, Value> implements KeyOrderedST<Key
 
 	private int rank(Node x, Key key) {
 		
-		return this.floor(x, key).count;
+		if (x == null) return 0;
+		int cmp = key.compareTo(x.key);
+		if (cmp < 0) return this.rank(x.left, key);
+		else if (cmp > 0) return 1 + size(x.left) + this.rank(x.right, key);
+		return size(x.left); 
 
 	}
 
 	@Override
 	public int size(Key start, Key end) {
-		// [start, end)
-		return this.rank(end) - this.rank(start);
+		
+		if (start.compareTo(end) > 0) {
+			Key aux = end;
+			end = start;
+			start = aux;
+		}
+		
+		if (this.contains(end)) return this.rank(end) - this.rank(start) + 1;
+		else return this.rank(end) - this.rank(start);
 	}
 
 	@Override
