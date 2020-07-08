@@ -1,3 +1,4 @@
+package containers.symboltable.applications;
 import java.util.TreeSet;
 
 import edu.princeton.cs.algs4.Point2D;
